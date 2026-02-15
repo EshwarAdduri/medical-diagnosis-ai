@@ -86,3 +86,5 @@ htmlcov/
 # ================================
 *.tar.gz
 *.zip
+
+!backend/models/*.h5
