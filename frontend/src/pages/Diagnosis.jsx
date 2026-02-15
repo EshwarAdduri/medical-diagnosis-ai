@@ -43,42 +43,39 @@ const Diagnosis = () => {
   });
 
   const handlePredict = async () => {
-    if (!uploadedImage) {
-      toast.error('Please upload an image first!');
-      return;
-    }
+  if (!uploadedImage) {
+    toast.error('Please upload an image first!');
+    return;
+  }
 
-    setIsLoading(true);
-    setResults(null);
+  setIsLoading(true);
+  setResults(null);
 
-    const formData = new FormData();
-    formData.append('file', uploadedImage);
-    formData.append('model_type', selectedModel);
+  const formData = new FormData();
+  formData.append('file', uploadedImage); // ✅ only file in body
 
-    try {
-      const response = await axios.post(
-        `${API_URL}/api/v1/predict`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-          params: {
-            model_type: selectedModel
-          }
-        }
-      );
+  try {
+    const response = await axios.post(
+      `${API_URL}/api/v1/predict?model_type=${selectedModel}`, // ✅ model_type ONLY in query
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
 
-      setResults(response.data);
-      toast.success('Prediction completed!');
-    } catch (error) {
-      console.error('Prediction error:', error);
-      const errorMessage = error.response?.data?.detail || 'Prediction failed. Please try again.';
-      toast.error(errorMessage);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    setResults(response.data);
+    toast.success('Prediction completed!');
+  } catch (error) {
+    console.error('Prediction error:', error);
+    const errorMessage =
+      error.response?.data?.detail || 'Prediction failed. Please try again.';
+    toast.error(errorMessage);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const clearImage = () => {
     setUploadedImage(null);
