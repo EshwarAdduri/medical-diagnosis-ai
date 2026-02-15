@@ -145,43 +145,89 @@ npm run dev
 ---
 
 ## 📁 Project Structure
-
 ```
 medical-diagnosis-ai/
-├── backend/                  # FastAPI backend
-│   ├── app/
-│   │   ├── routers/         # API endpoints
-│   │   │   └── prediction.py
-│   │   └── utils/           # Utilities
-│   │       ├── model_loader.py
-│   │       ├── image_processor.py
-│   │       └── logger.py
-│   ├── main.py              # FastAPI app entry
-│   ├── requirements.txt     # Python dependencies
-│   ├── Dockerfile           # Docker configuration
-│   └── .env.example         # Environment template
-├── frontend/                # React frontend
-│   ├── src/
-│   │   ├── components/      # React components
-│   │   │   ├── Navbar.jsx
-│   │   │   └── ResultsDisplay.jsx
-│   │   ├── pages/           # Page components
-│   │   │   ├── Home.jsx
-│   │   │   ├── Diagnosis.jsx
-│   │   │   └── About.jsx
-│   │   ├── hooks/           # Custom hooks
-│   │   │   └── useTheme.jsx
-│   │   ├── styles/          # CSS files
-│   │   ├── App.jsx          # Main app component
-│   │   └── main.jsx         # Entry point
-│   ├── package.json         # Node dependencies
-│   ├── vite.config.js       # Vite configuration
-│   ├── tailwind.config.js   # Tailwind configuration
-│   └── .env.example         # Environment template
-├── models/                  # .h5 model files (place here)
-├── docs/                    # Documentation
-├── docker-compose.yml       # Docker Compose config
-└── README.md               # This file
+│
+├── 📂 backend/                      # FastAPI Backend
+│   ├── 📂 app/
+│   │   ├── 📂 routers/
+│   │   │   ├── __init__.py
+│   │   │   └── prediction.py        # API endpoints
+│   │   ├── 📂 utils/
+│   │   │   ├── __init__.py
+│   │   │   ├── model_loader.py      # Model management
+│   │   │   ├── image_processor.py   # Image preprocessing
+│   │   │   └── logger.py            # Logging config
+│   │   └── __init__.py
+│   │
+│   ├── 📂 models/                   # Trained models
+│   │   ├── covid.h5
+│   │   ├── Malaria.h5
+│   │   ├── pneumonia.h5
+│   │   └── README.md
+│   ├── main.py                      # FastAPI app entry
+│   ├── requirements.txt             # Python dependencies
+│   ├── Dockerfile                   # Backend container
+│   └── .env.example                 # Environment template
+│
+├── 📂 frontend/                     # React Frontend
+│   ├── 📂 public/
+│   ├── 📂 src/
+│   │   ├── 📂 components/
+│   │   │   ├── Navbar.jsx           # Navigation bar
+│   │   │   └── ResultsDisplay.jsx   # Results visualization
+│   │   ├── 📂 pages/
+│   │   │   ├── Home.jsx             # Landing page
+│   │   │   ├── Diagnosis.jsx        # Main diagnosis page
+│   │   │   └── About.jsx            # About page
+│   │   ├── 📂 hooks/
+│   │   │   └── useTheme.jsx         # Theme management
+│   │   ├── 📂 styles/
+│   │   │   ├── index.css            # Global styles
+│   │   │   └── App.css              # App styles
+│   │   ├── App.jsx                  # Main app component
+│   │   └── main.jsx                 # Entry point
+│   ├── index.html                   # HTML template
+│   ├── package.json                 # Node dependencies
+│   ├── vite.config.js               # Vite configuration
+│   ├── tailwind.config.js           # Tailwind config
+│   ├── Dockerfile                   # Frontend container
+│   ├── nginx.conf                   # Nginx config
+│   └── .env.example                 # Environment template
+│
+├── 📂 Covid-19 Disease Diagnosis/       # Notebook + training data
+│   ├── 📂 dataset/
+│   ├── covid-19.ipynb
+│   ├── covid.h5
+│   └── .ipynb_checkpoints/
+│
+├── 📂 Malaria Disease Diagnosis/
+│   ├── 📂 data/
+│   ├── Malaria.ipynb
+│   ├── Malaria.h5
+│   └── .ipynb_checkpoints/
+│
+├── 📂 Pneumonia Disease Diagnosis/
+│   ├── 📂 chest_xray/
+│   ├── Pneumonia.ipynb
+│   ├── pneumonia.h5
+│   └── .ipynb_checkpoints/
+│
+├── 📂 Images for testing/               # Sample test images
+│   ├── 📂 For Covid/
+│   ├── 📂 For Malaria/
+│   └── 📂 For Pneumonia/
+│
+├── 📂 docs/                         # Documentation
+│   ├── SETUP.md                     # Complete setup guide
+│   ├── RENDER_DEPLOYMENT.md         # Cloud deployment
+│   └── API.md                       # API documentation
+│
+├── docker-compose.yml               # Docker orchestration
+├── .gitignore                       # Git ignore rules
+├── LICENSE                          # MIT License
+├── README.md                        # Main documentation
+└── QUICKSTART.md                    # Quick start guide
 ```
 
 ---
